@@ -1,6 +1,6 @@
 <div align="center">
 
-# <a href="https://www.zawyafi.com/"><img src="./frontend/public/zawyafi-outlined-z.svg" width="50" alt="Zawyafi Logo" valign="middle" /> Zawyafi</a>
+# <a> Rubh</a>
 
 **Institutional-Grade Web3 Infrastructure for Real-World Asset (RWA) Investments**
 
@@ -9,7 +9,7 @@
 
 _Connecting Main Street to Decentralized Finance through Chainlink CRE._
 
-_Demo live: https://www.zawyafi.com_
+_Demo live: https://www.Rubh.com_
 
 </div>
 
@@ -17,9 +17,9 @@ _Demo live: https://www.zawyafi.com_
 
 ## 1. Project Overview
 
-**Zawyafi** is a fully compliant, real-world asset (RWA) investment platform that enables users to invest in everyday physical businesses—ranging from local cafes and bakeries to automated vending machines and large-scale manufacturing facilities.
+**Rubh** is a fully compliant, real-world asset (RWA) investment platform that enables users to invest in everyday physical businesses—ranging from local cafes and bakeries to automated vending machines and large-scale manufacturing facilities.
 
-Through tokenization, Zawyafi turns business inventory and future revenue streams into fractions of liquid, high-yield digital assets.
+Through tokenization, Rubh turns business inventory and future revenue streams into fractions of liquid, high-yield digital assets.
 
 ### The Core Problem
 
@@ -27,11 +27,11 @@ Today's localized businesses suffer from a severe **lack of liquidity** due to t
 
 Furthermore, current RWA platforms suffer from a **fundamental lack of trust**: _how can an on-chain investor trust the off-chain revenue metrics of a local cafe?_
 
-### The Zawyafi Solution
+### The Rubh Solution
 
 We solve this using **Chainlink CRE (Chainlink Run Environment)** to cryptographically connect off-chain Point-of-Sale (POS) systems, ERPs, and IoT Vending machines directly to on-chain smart contracts. This guarantees **absolute transparency and tamper-proof revenue reporting**.
 
-By lowering the barrier to entry to just **$10**, Zawyafi democratizes access to institutional-grade, real-world yield.
+By lowering the barrier to entry to just **$10**, Rubh democratizes access to institutional-grade, real-world yield.
 
 ---
 
@@ -74,7 +74,7 @@ _Example: A local cafe needs $30,000 to expand. They tokenize their future inven
 
 ## 4. Technical Architecture & CRE Usage
 
-The fundamental challenge in RWA is the "Oracle Problem": securing the connection between off-chain reality and on-chain logic. Zawyafi utilizes **Chainlink CRE** as the ultimate bridge of trust.
+The fundamental challenge in RWA is the "Oracle Problem": securing the connection between off-chain reality and on-chain logic. Rubh utilizes **Chainlink CRE** as the ultimate bridge of trust.
 
 By running trust-minimized off-chain computation, CRE fetches data directly from integrated APIs (like Square POS, local ERPs, or custom hardware API endpoints) and publishes verified revenue and settlement metadata on-chain.
 
@@ -136,7 +136,7 @@ _Use Case: Securely settling user verification status on-chain without exposing 
 ```mermaid
 sequenceDiagram
     participant KYC as "KYC Provider (Off-Chain)"
-    participant API as "Zawyafi Backend"
+    participant API as "Rubh Backend"
     participant CRE as "Chainlink CRE"
     participant SC as "Identity Manager (On-Chain)"
 
