@@ -17,7 +17,13 @@ import {
   Scale,
   Building2,
   Cpu,
-  BookOpen
+  BookOpen,
+  MonitorSmartphone,
+  Package,
+  Wifi,
+  Layers,
+  Link as LinkIcon,
+  Banknote
 } from 'lucide-react'
 import { RubhLogo } from '@/components/branding/rubh-logo'
 
@@ -291,6 +297,140 @@ export default function LandingPage() {
                 <span className="text-xs font-bold text-[#133359] flex items-center gap-1">Read more <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform" /></span>
               </Link>
             </RevealSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── VERIFIED ARCHITECTURE FLOW ───────────────── */}
+      <section className="py-20 md:py-24 bg-white border-t border-slate-200 overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
+        
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <RevealSection className="text-center mb-16 max-w-3xl mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#133359] mb-2 block">
+              Product & Verified Architecture
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+              The data is verified at the source, not submitted via PDF
+            </h2>
+            <p className="text-slate-600 text-base">
+              End-to-end telemetry pipeline ensuring immutable records and automated settlement.
+            </p>
+          </RevealSection>
+
+          {/* Flow Container */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 lg:gap-12 w-full max-w-5xl mx-auto">
+            
+            {/* Column 1: Data Sources */}
+            <div className="flex flex-col gap-4 w-full md:w-72 shrink-0">
+              <RevealSection delay="delay-[100ms]" className="w-full">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm relative group hover:shadow-md hover:border-slate-300 transition-all">
+                  <div className="size-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                    <MonitorSmartphone className="size-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-slate-900">POS Systems</h4>
+                    <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider mt-0.5">Live Sales Telemetry</p>
+                  </div>
+                </div>
+              </RevealSection>
+
+              <RevealSection delay="delay-[200ms]" className="w-full">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm relative group hover:shadow-md hover:border-slate-300 transition-all">
+                  <div className="size-10 rounded-xl bg-orange-50 flex items-center justify-center shrink-0">
+                    <Package className="size-5 text-orange-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-slate-900">ERP Systems</h4>
+                    <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider mt-0.5">Inventory & Logistics</p>
+                  </div>
+                </div>
+              </RevealSection>
+
+              <RevealSection delay="delay-[300ms]" className="w-full">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm relative group hover:shadow-md hover:border-slate-300 transition-all">
+                  <div className="size-10 rounded-xl bg-amber-50 flex items-center justify-center shrink-0">
+                    <Wifi className="size-5 text-amber-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-slate-900">IoT Sensors</h4>
+                    <p className="text-[10px] text-slate-500 font-medium uppercase tracking-wider mt-0.5">Hardware Telemetry</p>
+                  </div>
+                </div>
+              </RevealSection>
+            </div>
+
+            {/* Mobile Arrow */}
+            <div className="md:hidden flex justify-center py-2 text-slate-300">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+
+            {/* Desktop Connectors (Left) */}
+            <div className="hidden md:flex flex-col justify-center text-slate-300 opacity-60">
+               <svg width="40" height="120" viewBox="0 0 40 120" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-400">
+                  <path d="M0 20 Q 20 20 20 60 T 40 60" />
+                  <path d="M0 60 H 40" />
+                  <path d="M0 100 Q 20 100 20 60 T 40 60" />
+               </svg>
+            </div>
+
+            {/* Column 2: On-Chain Layer */}
+            <RevealSection delay="delay-[400ms]" className="w-full md:w-80 shrink-0 z-10">
+              <div className="rounded-3xl bg-[#0B1A2E] border border-slate-700/50 p-8 shadow-2xl text-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent" />
+                <div className="relative z-10">
+                  <h3 className="font-heading text-2xl font-bold text-white mb-6">
+                    Rubh On-Chain Layer
+                  </h3>
+                  <div className="h-px w-full bg-slate-700/60 mb-6" />
+                  <p className="text-sm text-blue-200/80 font-medium flex items-center justify-center gap-2">
+                    <Layers className="size-4" />
+                    Smart Contracts & Verification Oracles
+                  </p>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* Mobile Arrow */}
+            <div className="md:hidden flex justify-center py-2 text-slate-300">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </div>
+
+            {/* Desktop Connectors (Right) */}
+            <div className="hidden md:flex flex-col justify-center text-slate-300 opacity-60">
+               <svg width="40" height="80" viewBox="0 0 40 80" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400">
+                  <path d="M0 40 Q 20 40 20 20 T 40 20" />
+                  <path d="M0 40 Q 20 40 20 60 T 40 60" />
+               </svg>
+            </div>
+
+            {/* Column 3: Outputs */}
+            <div className="flex flex-col gap-5 w-full md:w-72 shrink-0">
+              <RevealSection delay="delay-[500ms]" className="w-full">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm relative group hover:shadow-md hover:border-slate-300 transition-all">
+                  <div className="size-10 rounded-xl bg-slate-100 flex items-center justify-center shrink-0">
+                    <LinkIcon className="size-5 text-slate-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-slate-900">Immutable Record</h4>
+                    <p className="text-[10px] text-red-500 font-bold uppercase tracking-wider mt-0.5">Tamper-proof history</p>
+                  </div>
+                </div>
+              </RevealSection>
+
+              <RevealSection delay="delay-[600ms]" className="w-full">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-emerald-50/50 border border-emerald-200 shadow-sm relative group hover:shadow-md hover:border-emerald-300 transition-all">
+                  <div className="size-10 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
+                    <Banknote className="size-5 text-emerald-700" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-slate-900">Auto Payout</h4>
+                    <p className="text-[10px] text-orange-500 font-bold uppercase tracking-wider mt-0.5">Direct to Investors</p>
+                  </div>
+                </div>
+              </RevealSection>
+            </div>
+
           </div>
         </div>
       </section>
