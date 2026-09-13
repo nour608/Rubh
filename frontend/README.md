@@ -1,6 +1,6 @@
-# Zawyafi Frontend (Next.js)
+# rubh Frontend (Next.js)
 
-Frontend V1 for the Zawyafi hackathon demo, including:
+Frontend V1 for the rubh hackathon demo, including:
 
 - `/` narrative control-room landing page
 - `/merchant` merchant operations and funding actions

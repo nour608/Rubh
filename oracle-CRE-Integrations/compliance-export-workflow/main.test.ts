@@ -125,11 +125,11 @@ describe('Reason code decoding', () => {
 
 describe('Backend URL protocol parsing', () => {
   it('parses http and https without URL runtime dependency', () => {
-    expect(__test__.getUrlProtocol('https://api.zawyafi.com')).toBe('https:')
+    expect(__test__.getUrlProtocol('https://api.rubh.com')).toBe('https:')
     expect(__test__.getUrlProtocol('http://127.0.0.1:3100')).toBe('http:')
   })
 
   it('throws for invalid base urls', () => {
-    expect(() => __test__.getUrlProtocol('api.zawyafi.com')).toThrow()
+    expect(() => __test__.getUrlProtocol('api.rubh.com')).toThrow()
   })
 })

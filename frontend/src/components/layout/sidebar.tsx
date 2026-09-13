@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { BarChart2, LogOut, PieChart, Settings, ShieldCheck, Store, Wallet } from 'lucide-react'
 import { useActiveWallet, useDisconnect } from 'thirdweb/react'
-import { ZawyafiLogo } from '@/components/branding/zawyafi-logo'
+import { RubhLogo } from '@/components/branding/rubh-logo'
 import { useCapabilities } from '@/hooks/use-capabilities'
 import { clearWalletAuthSession } from '@/lib/api/wallet-auth'
 import { cn } from '@/lib/utils'
@@ -79,8 +79,8 @@ export function Sidebar() {
     <aside className="hidden h-full w-72 shrink-0 flex-col border-r border-line bg-panel/80 backdrop-blur lg:flex">
       <div className="p-6 pb-2">
         <Link href="/" className="mb-8 inline-flex flex-col items-start gap-1 transition-opacity hover:opacity-85">
-          <ZawyafiLogo className="h-8 w-auto text-text" />
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-textMuted">Private Markets</p>
+          <RubhLogo className="h-8 w-auto text-text" />
+          <p className="text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-400">Institutional RWA</p>
         </Link>
         <div className="mb-4 px-2 text-xs font-semibold uppercase tracking-widest text-textMuted">Menu</div>
       </div>

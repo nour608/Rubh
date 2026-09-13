@@ -1,274 +1,181 @@
 <div align="center">
 
-# <a> Rubh</a>
+# Rubh (ربح)
 
-**Institutional-Grade Web3 Infrastructure for Real-World Asset (RWA) Investments**
+**Institutional-Grade Sharia-Compliant Real-World Asset (RWA) Marketplace Powered by Chainlink CRE**
 
 [![Chainlink BUILD](https://img.shields.io/badge/Chainlink-CRE-blue.svg)](https://chain.link/chainlink-runtime-environment)
+[![Sharia Compliant](https://img.shields.io/badge/Sharia-Compliant-emerald.svg)](https://rubh.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-_Connecting Main Street to Decentralized Finance through Chainlink CRE._
-
-_Demo live: https://www.Rubh.com_
+_Democratizing GCC SME Trade & Asset Financing from $10 with Tamper-Proof Cryptographic Verification._
 
 </div>
 
 ---
 
-## 1. Project Overview
+## 1. Vision & Executive Summary
 
-**Rubh** is a fully compliant, real-world asset (RWA) investment platform that enables users to invest in everyday physical businesses—ranging from local cafes and bakeries to automated vending machines and large-scale manufacturing facilities.
+**Rubh (ربح)** turns physical, fast-moving SME inventory and revenue-generating business assets in Saudi Arabia and the GCC into fractional, yield-bearing digital assets. 
 
-Through tokenization, Rubh turns business inventory and future revenue streams into fractions of liquid, high-yield digital assets.
+By replacing self-reported financial statements with **Chainlink CRE (Chainlink Run Environment)** tamper-proof verification — pulled directly from point-of-sale systems, ERPs, and industrial IoT devices — investors can see exact business performance in real time rather than relying on static financial statements. 
 
-### The Core Problem
-
-Today's localized businesses suffer from a severe **lack of liquidity** due to traditional financial friction, while everyday investors are locked out of private-market yield generation due to high minimum tickets.
-
-Furthermore, current RWA platforms suffer from a **fundamental lack of trust**: _how can an on-chain investor trust the off-chain revenue metrics of a local cafe?_
-
-### The Rubh Solution
-
-We solve this using **Chainlink CRE (Chainlink Run Environment)** to cryptographically connect off-chain Point-of-Sale (POS) systems, ERPs, and IoT Vending machines directly to on-chain smart contracts. This guarantees **absolute transparency and tamper-proof revenue reporting**.
-
-By lowering the barrier to entry to just **$10**, Rubh democratizes access to institutional-grade, real-world yield.
+Rubh provides SMEs with a choice of **Sharia-compliant financing structures** matched to their actual capital needs, while offering global retail investors fractional, asset-backed opportunities starting from just **$10 (~37.5 SAR)**. Beyond the initial financing product, Rubh's long-term roadmap evolves into a full commercial neobank with multiple revenue streams built upon the same verified-performance infrastructure.
 
 ---
 
-## 2. Business Value
+## 2. The Structural Problem
 
-### For Businesses (Issuers)
-
-Solve the lack of liquidity without giving up equity or taking predatory loans.
-
-- **Raise Liquidity Fast**: Turn your daily inventory (e.g., cups of coffee, baked goods) into upfront capital.
-- **Global Investors**: Tap into a borderless, permissionless pool of global Web3 investors.
-- **All-in-One Platform**: Manage tokenization, automated payouts, and compliance seamlessly in one dashboard.
-
-_Example: A local cafe needs $30,000 to expand. They tokenize their future inventory:_
-
-- **Coffee**: $10,000 target → Tokenized at $2 per unit/order
-- **Bakery**: $10,000 target → Tokenized at $3 per unit/order
-- **Sandwiches**: $10,000 target → Tokenized at $4 per unit/order
-
-### For Investors
-
-- **Real-World Yield**: Earn sustainable returns backed by physical commerce, not speculative tokenomics.
-- **On-Chain Ownership**: Immutable, cryptographic proof of your fractional ownership.
-- **Transparent Assets**: Real-time business revenue proven by Chainlink CRE.
-- **Fractional Investments**: Accessible fractional investments starting from just $10.
-- **High Yield Rates**: Competitive APRs derived directly from business profit margins.
-- **Flexible Payouts**: Automated distribution schedules (Weekly, Monthly, Yearly).
+- **For Businesses:** SMEs in Saudi Arabia and the broader GCC face a structural financing deficit exceeding **SAR 250 billion**. Traditional banks reject a large share of micro-SME loan applications due to a lack of multi-year audited financial histories and collateral requirements that small operators cannot meet.
+- **For Investors:** Retail capital is trapped in low-yield savings accounts or locked out of high-yield private markets by steep minimum investment thresholds (often SAR 10,000 to $100K+).
+- **For Existing Platforms (The "Oracle Problem"):** Current debt-crowdfunding competitors (e.g. Lendo, Funding Souq, Manafa) suffer from a fundamental "Oracle Problem" — they rely on self-reported financial statements, static PDFs, and manual auditing, giving investors no independent way to verify that underlying commercial activity is real and ongoing.
 
 ---
 
-## 3. Key Features
+## 3. The Solution — SME-Driven, Dual-Structure Financing
 
-- **Tokenized Real-World Assets**: Immutable, divisible, and programmable representations of physical business inventory.
-- **Private KYC Verification**: Privacy-preserving identity verification.
-- **Compliance-Ready Infrastructure**: Built-in regulatory safeguards adhering to international financial standards.
-- **Smart Contract Settlement**: Trustless, automated payout distribution based on cryptographically verified revenue.
-- **Fiat & Crypto Payments**: Seamless on-ramping for mainstream retail alongside Web3 natives. (Not Implemented Yet)
+Rather than forcing every business into a single instrument, each SME chooses the Sharia-compliant structure that fits its actual need — short-cycle trade finance or longer-cycle growth capital — and sets its own deal terms. Rubh does not impose fixed terms; the business offers terms attractive enough to draw investor capital, and investors decide, deal by deal, whether to participate from a **$10 minimum ticket**.
+
+```
+                           ┌─────────────────────────────────────────┐
+                           │               Rubh (ربح)                │
+                           │   Sharia-Compliant RWA Marketplace      │
+                           └────────────────────┬────────────────────┘
+                                                │
+                     ┌──────────────────────────┴──────────────────────────┐
+                     ▼                                                     ▼
+        ┌─────────────────────────┐                           ┌─────────────────────────┐
+        │  Model A: Murabaha      │                           │  Model B: Musharakah    │
+        │  (مرابحة - Cost-Plus)   │                           │  (مشاركة - Profit-Share)│
+        ├─────────────────────────┤                           ├─────────────────────────┤
+        │ • Inventory Trade       │                           │ • Capital Asset Equity  │
+        │ • Fixed Pre-Agreed Rate │                           │ • Proportional P&L Share│
+        │ • Enforceable Buyback   │                           │ • Upside & Downside Move│
+        │ • POS (Square/Foodics)  │                           │ • IoT Telemetry / Meters│
+        └─────────────────────────┘                           └─────────────────────────┘
+```
+
+### Financing Model A — Murabaha (Cost-Plus Trade Finance)
+A dedicated independent Special Purpose Vehicle (SPV) takes constructive ownership of a defined batch of inventory on behalf of investors, then resells it to the SME at a fixed, pre-agreed markup. 
+- **Repayment:** Daily POS sell-through, weekly, monthly, or term-end lump sum up to 12 months.
+- **Verification:** Chainlink CRE verifies sell-through directly from the merchant's POS system (Square, Foodics, ERP), triggering automated investor repayments.
+- **Capital Protection:** If inventory remains unsold beyond the agreed term, a legally enforced buyback clause requires the SME to repurchase the remainder at cost, protecting investor principal.
+- **Case Example:** *Al-Nakhla Luxury Retail Seasonal Restock (Jeddah)* — 12.0% fixed markup, 6-month term, continuous Square POS sell-through.
+
+### Financing Model B — Musharakah (Equity / Profit-Share Partnership)
+Investors take fractional, proportional ownership in a specific revenue-generating asset or business unit — not the SME's enterprise as a whole — and share in verified profit or revenue generated by that asset over time.
+- **Mechanism:** True profit-and-loss-sharing structure. Returns track actual performance, sharing both upside and downside without fixed markups or buyback guarantees.
+- **Verification:** Operational IoT metering and telemetry connected on-chain via Chainlink CRE.
+- **Case Example:** *Tawrea Water-as-a-Service (WaaS) Station (Dammam 2nd Industrial City)* — Build-Own-Operate facility treating wastewater under a 10-year offtake contract. IoT flow meters and pressure sensors stream directly into Chainlink CRE (18.2% target profit-share).
 
 ---
 
-## 4. Technical Architecture & CRE Usage
+## 4. Core Competitive Moats
 
-The fundamental challenge in RWA is the "Oracle Problem": securing the connection between off-chain reality and on-chain logic. Rubh utilizes **Chainlink CRE** as the ultimate bridge of trust.
+1. **The CRE Data Moat:** Competitors validate static deeds or audited PDFs. Rubh validates dynamic, real-time commercial and operational data — POS sell-through for Murabaha, IoT telemetry output for Musharakah — through tamper-proof, on-chain data pipelines that create a high technical barrier to entry.
+2. **Micro-Capital Accessibility:** A **$10 minimum ticket size (~37.5 SAR)** unlocks the mass-market retail demographic, heavily undercutting conventional crowdfunding minimums of $250 to $100,000+.
+3. **Dual-Structure Flexibility:** Matches instrument to need. Musharakah is genuine profit/loss sharing for capital assets. Murabaha is a fixed-fee, non-compounding trade finance structure avoiding compounding-interest traps.
 
-By running trust-minimized off-chain computation, CRE fetches data directly from integrated APIs (like Square POS, local ERPs, or custom hardware API endpoints) and publishes verified revenue and settlement metadata on-chain.
+---
 
-### 🔄 CRE Workflows
+## 5. Technical Architecture & Chainlink CRE Workflows
 
-#### 1. POS Integration & Revenue Tracking (Square Workflow)
-
-_Use Case: Fetching daily sales data from a Cafe's Square POS system to trigger on-chain investor payouts._
+Rubh uses **Chainlink CRE (Chainlink Run Environment)** to cryptographically connect off-chain commerce to on-chain smart contracts.
 
 ```mermaid
 sequenceDiagram
-    participant POS as "Square POS (Off-Chain)"
-    participant CRE as "Chainlink CRE"
-    participant SC as "Settlement Smart Contract"
-    participant INV as "Investors"
+    participant COMMERCE as "Off-Chain Commerce (POS / IoT Telemetry)"
+    participant CRE as "Chainlink CRE (Decentralized Consensus)"
+    participant SC as "OracleCoordinator & SettlementVault"
+    participant INV as "Fractional Retail Investors"
 
-    POS->>CRE: 1. Record daily unit sales (Coffee/Bakery)
+    COMMERCE->>CRE: 1. Ingest Daily POS Sales / IoT Meter Readings
     activate CRE
-    CRE->>CRE: 2. Cryptographic validation & aggregation
-    CRE->>SC: 3. Post verified revenue proof on-chain
+    CRE->>CRE: 2. Cryptographic Validation, Anomaly Scoring & PII Stripping
+    CRE->>SC: 3. writeReport(periodId, metrics, proof) to OracleCoordinator
     deactivate CRE
     activate SC
-    SC->>SC: 4. Calculate yield per fractional share
-    SC-->>INV: 5. Auto-distribute USDC yields
+    SC->>SC: 4. Record Period in RevenueRegistry & Calculate Unit Yields
+    SC-->>INV: 5. Automated Pro-Rata USDC Yield Settlement
     deactivate SC
 ```
 
-<details>
-<summary>Technical Flow Diagram</summary>
+### CRE Workflows in this Repository:
+- `oracle-CRE-Integrations/square-workflow/`: Daily POS sales fetching, category aggregation, on-chain tokenized category filtering, and signed report submission.
+- `oracle-CRE-Integrations/kyc-settlement-workflow/`: Zero-PII on-chain investor compliance whitelist settlement.
+- `oracle-CRE-Integrations/compliance-export-workflow/`: Real-time immutable audit trails for regulatory sandbox reporting.
 
-```mermaid
-graph TD
-    A[Cron Trigger / Manual Execution] --> B[Fetch Data: Square POS API]
-    B --> C[Process Data: Analyze Payment Notes]
-    C --> D[Categorize & Aggregate Revenue]
-    D --> E[Query On-Chain: OracleCoordinator]
-    E --> F[Check: Is Investment Batch Finished?]
+---
 
-    F -->|Yes| G[Halt Execution: Batch Complete]
-    F -->|No| H[Hash Categories via keccak256]
+## 6. Legal, SPV & Regulatory Sandbox Structure
 
-    H --> I[Filter: Keep Only Tokenized Categories]
-    I --> J[Check: Is Period Already Recorded On-Chain?]
+- **Regulatory Sandbox Entry (KSA):** Applying for an Experimental Permit under the **Saudi Capital Market Authority (CMA) FinTech Lab** and **Saudi Central Bank (SAMA) Sandbox** to onboard capped SME and retail investor pilot cohorts.
+- **Independent Orphan SPV:** Financed batches are held by orphan Special Purpose Vehicles (SPVs) independently held from Rubh, with Rubh acting as Manager/Servicer to preserve **Arranger status** while securing investor constructive ownership.
+- **Global Investor Access:** Evaluated under offshore / UAE regulatory frameworks (DIFC DFSA Tokenisation Cohort or ADGM FSRA) to onboard international retail capital.
 
-    J -->|Yes| K[Halt Execution: Period Already Processed]
-    J -->|No| L[Generate Cryptographic Revenue Reports]
+---
 
-    L --> M[Chainlink CRE: writeReport Txs]
-    M --> N[On-Chain Settlement: OracleCoordinator]
-    N --> O[Distribute USDC Yields to Investors]
+## 7. Long-Term Vision — Beyond Financing (The Verified Neobank)
+
+Rubh's financing marketplace is the entry point, not the end state. The same verified-performance infrastructure — on-chain data pipelines, KYC/compliance rails, and USDC settlement — is intended to support a broader **commercial neobank** over time, providing:
+1. Automated SME Working Capital & Treasury Management.
+2. Verified Performance Invoicing & Real-Time Trade Settlement.
+3. Institutional-Grade Private Market Secondary Liquidity.
+
+---
+
+## 8. Repository Structure
+
 ```
-
-</details>
-
-#### 2. KYC On-Chain Settlement Workflow
-
-_Use Case: Securely settling user verification status on-chain without exposing PII (Personally Identifiable Information)._
-
-```mermaid
-sequenceDiagram
-    participant KYC as "KYC Provider (Off-Chain)"
-    participant API as "Rubh Backend"
-    participant CRE as "Chainlink CRE"
-    participant SC as "Identity Manager (On-Chain)"
-
-    KYC->>API: 1. User passes KYC checks
-    API->>CRE: 2. Request on-chain status update (Hash)
-    activate CRE
-    CRE->>CRE: 3. Verify API signature & auth
-    CRE->>SC: 4. Transact status (Whitelisted/Rejected)
-    deactivate CRE
-    SC-->>SC: 5. Update investor trading permissions
-```
-
-#### 3. Compliance & Audit Export Workflow
-
-_Use Case: Generating real-time, mathematically proven audit trails for regulators._
-
-```mermaid
-sequenceDiagram
-    participant SC as "Smart Contracts (On-Chain)"
-    participant CRE as "Chainlink CRE"
-    participant REG as "Regulatory Data Lake"
-
-    SC->>CRE: 1. Emit trade & settlement events
-    activate CRE
-    CRE->>CRE: 2. Aggregate & format compliance report
-    CRE->>REG: 3. Push immutable audit manifest to Off-Chain Vault
-    deactivate CRE
+Rubh/
+├── docs/                             # Vision, product specifications & legal memos
+│   └── Rubh (ربح).md
+├── frontend/                         # Next.js 15 web application (TailwindCSS, Thirdweb v5, Viem)
+│   ├── src/app/(marketing)/          # Rubh landing page & dual-structure explorer
+│   ├── src/app/(app)/investor/       # Marketplace, deal details & portfolio
+│   ├── src/app/(app)/merchant/       # SME issuance & settlement funding
+│   ├── src/app/(app)/compliance/     # CMA/SAMA Sandbox control & audit export
+│   └── src/components/branding/      # Rubh Arabic & English SVG logo components
+├── smart-contracts/                  # EVM contracts (Foundry)
+│   ├── src/core/ProductBatchFactory.sol
+│   ├── src/core/OracleCoordinator.sol
+│   ├── src/core/RevenueRegistry.sol
+│   └── src/core/SettlementVault.sol
+├── oracle-CRE-Integrations/          # Chainlink CRE Workflows
+│   ├── square-workflow/              # POS sell-through verification
+│   ├── kyc-settlement-workflow/      # Zero-PII compliance attestation
+│   └── compliance-export-workflow/   # Regulatory audit export
+└── backend/                          # Fastify API gateway & metadata store
 ```
 
 ---
 
-## 5. Repository Structure
+## 9. Smart Contract Addresses (Sepolia Testnet)
 
-This repository is organized as a clean, microservice-ready architecture:
-
-- `docs/`: In-depth product, architecture, and deliverables documentation.
-- `oracle-CRE-Integrations/`: Core Chainlink CRE oracle logic.
-  - `square-workflow/`: Square revenue off-chain fetching.
-  - `kyc-settlement-workflow/`: KYC status onchain settlement.
-  - `compliance-export-workflow/`: Exporting audit reports.
-- `smart-contracts/`: Immutable EVM contracts managing fractional tokenization, yields, and identity.
-- `backend/`: Core backend and API gateway for orchestrating KYC and off-chain syncs.
-- `frontend/`: Next.js web application for issuers and investors.
-
----
-
-## 6. Quick Start (Oracle CRE)
-
-To spin up and test the Chainlink CRE integration locally:
-You can find more information about every workflow in WORKFLOW_OVERVIEW.md file of every workflow.
-But here is the essential information:
-
-1. Install dependencies for every workflow:
-
-   ```bash
-   bun install
-   ```
-
-2. Add your CRE_ETH_PRIVATE_KEY to the main .env file:
-
-   ```bash
-   CRE_ETH_PRIVATE_KEY=your_private_key
-   ```
-
-   If you have any Private key issue while running the workflow, you can use this command in the terminal (but it's not recommended):
-
-   ```bash
-   unset CRE_ETH_PRIVATE_KEY
-   export CRE_ETH_PRIVATE_KEY="$(sed -n 's/^CRE_ETH_PRIVATE_KEY=//p' .env | tr -d '\r\n' | tr -d '"')"
-   ```
-
-3. To test the square workflow add .env file to the square-workflow directory and use the following PAT (Sandbox PAT):
-
-   ```bash
-   SQUARE_PAT=
-   ```
-
-   For KYC and Compliance workflows add .env file to the kyc-settlement-workflow directory and use the following:
-
-   ```bash
-   BACKEND_INTERNAL_TOKEN=
-   ```
-
----
-
-> **Note:** The Square workflow is designed to run once daily as it fetches only the previous day's sales data. If executed multiple times in a single day, the workflow will skip processing and indicate that the period has already been reported.
-
-## 6.2 You can quary the periods using this command with Dune
-
-<details>
-
-```bash
--- ============================================================
--- Fetch netUnitsSold from PeriodRecorded events on Sepolia
--- Contract: 0xfDb35eaeAB99fbC5eBD9D5929e2233acc5ee0BEA
--- ============================================================
-
-SELECT
-    block_time,
-    block_number,
-    tx_hash,
-
-    -- Indexed params (from topics)
-    topic1                                                          AS periodId,
-    topic2                                                          AS merchantIdHash,
-    topic3                                                          AS productIdHash,
-
-    -- Non-indexed params (from data field, each param = 32 bytes)
-    bytearray_to_uint256(bytearray_substring(data, 1,  32))        AS status,         -- bytes 1–32
-    bytearray_to_uint256(bytearray_substring(data, 33, 32))        AS netUnitsSold,   -- bytes 33–64
-    bytearray_substring(data, 65, 32)                               AS batchHash       -- bytes 65–96
-
-FROM sepolia.logs
-WHERE
-    contract_address = 0xfDb35eaeAB99fbC5eBD9D5929e2233acc5ee0BEA
-
-    -- topic0 = keccak256('PeriodRecorded(bytes32,bytes32,bytes32,uint8,uint256,bytes32)')
-    AND topic0 = 0x62adc0da28be6630fb65248c06c4dd0d19f027d817b2624c10d4dfbd58a62fc2
-
-ORDER BY block_time DESC
-LIMIT 100;
-```
-
-</details>
-
-## 7. Smart contracts addresses (Sepolia Testnet)
-
-- **IdentityRegistry:** `0xc15869818c5E69373B04dd0433c7Ab46848e1AB4`
-- **Compliance:** `0x29EA0E59b37D96CCD4394dEF0737b3d21E328362`
-- **CurrencyManager:** `0xd3EE92adE8cb872C73Ff6B6d53FB3702405058df`
 - **ProductBatchFactory:** `0xBFdBdeb6FF7F77afa0Ec47B1CFD34b53D81EfF32`
+- **OracleCoordinator:** `0xDb4c31628Ff691d114863058F1034B54964dfD62`
 - **RevenueRegistry:** `0xfDb35eaeAB99fbC5eBD9D5929e2233acc5ee0BEA`
 - **SettlementVault:** `0x70Fc51b111e384ad3B548e94895cc64cB9C592Ab`
-- **OracleCoordinator:** `0xDb4c31628Ff691d114863058F1034B54964dfD62`
+- **CurrencyManager:** `0xd3EE92adE8cb872C73Ff6B6d53FB3702405058df`
+- **IdentityRegistry:** `0xc15869818c5E69373B04dd0433c7Ab46848e1AB4`
+- **Compliance:** `0x29EA0E59b37D96CCD4394dEF0737b3d21E328362`
 - **KycOracleReceiver:** `0xe706556EeFc0d056A96868e1A38567d8fe3e9bf9`
+
+---
+
+## 10. Quick Start
+
+### Frontend (Next.js 15)
+```bash
+cd frontend
+npm install
+npm run dev
+# App available at http://localhost:3000
+```
+
+### Chainlink CRE Workflows
+```bash
+cd oracle-CRE-Integrations/square-workflow
+bun install
+# Configure CRE_ETH_PRIVATE_KEY and SQUARE_PAT in .env
+```

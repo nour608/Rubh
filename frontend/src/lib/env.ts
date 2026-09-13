@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 const envSchema = z.object({
-  NEXT_PUBLIC_BACKEND_BASE_URL: z.string().url().default('https://api.zawyafi.com'),
+  NEXT_PUBLIC_BACKEND_BASE_URL: z.string().url().default('https://api.rubh.com'),
   NEXT_PUBLIC_CHAIN_ID: z.coerce.number().default(11155111),
   NEXT_PUBLIC_SEPOLIA_RPC_URL: z.string().url().default('https://ethereum-sepolia-rpc.publicnode.com'),
   NEXT_PUBLIC_THIRDWEB_CLIENT_ID: z.string().default('test'),

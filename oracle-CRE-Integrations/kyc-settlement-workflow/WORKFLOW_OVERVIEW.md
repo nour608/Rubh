@@ -40,7 +40,7 @@ graph LR
 
 From `config.staging.json`:
 
-- `backendBaseUrl`: `https://api.zawyafi.com`
+- `backendBaseUrl`: `https://api.rubh.com`
 - `chainSelectorName`: `ethereum-testnet-sepolia`
 - `isTestnet`: `true`
 - `kycReceiverAddress`: `0xe706556EeFc0d056A96868e1A38567d8fe3e9bf9`

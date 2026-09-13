@@ -69,8 +69,8 @@ export const InvestorDashboard = () => {
   return (
     <main className="space-y-6">
       <PageHeader
-        title="Investor Portal"
-        subtitle="Discover active batches, evaluate risk tiers, and execute buy/claim actions through onchain settlement flows."
+        title="Rubh Institutional Investor Portal"
+        subtitle="Discover Sharia-compliant Murabaha & Musharakah offerings, track real-time Chainlink CRE attestation, and manage fractional holdings."
       />
 
       <InvestorConnectGate

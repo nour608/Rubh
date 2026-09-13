@@ -4,7 +4,7 @@ export const createNonce = (): string => randomBytes(16).toString('hex')
 
 export const computeCommitment = (hmacKey: string, chainId: number, wallet: string, nonce: string): string =>
   createHmac('sha256', hmacKey)
-    .update(`zawyafi:${chainId}:${wallet.toLowerCase()}:${nonce}`, 'utf8')
+    .update(`rubh:${chainId}:${wallet.toLowerCase()}:${nonce}`, 'utf8')
     .digest('hex')
 
 export const sha256Hex = (input: string): string => createHash('sha256').update(input, 'utf8').digest('hex')

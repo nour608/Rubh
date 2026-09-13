@@ -13,7 +13,7 @@ describe('wallet-auth', () => {
 
   it('builds deterministic auth message payload', () => {
     const message = buildWalletAuthMessage('0xABCDEFabcdefABCDEFabcdefABCDEFabcdefABCD', '1234567890')
-    expect(message).toContain('Zawyafi API Session')
+    expect(message).toContain('rubh API Session')
     expect(message).toContain('address:0xabcdefabcdefabcdefabcdefabcdefabcdefabcd')
     expect(message).toContain('timestamp:1234567890')
   })

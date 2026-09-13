@@ -1,6 +1,6 @@
 {
   "schedule": "*/1 * * * *",
-  "backendBaseUrl": "https://api.zawyafi.com",
+  "backendBaseUrl": "https://api.rubh.com",
   "backendInternalToken": "",
   "readyPath": "/internal/compliance/ready",
   "resultPath": "/internal/compliance/report-result",

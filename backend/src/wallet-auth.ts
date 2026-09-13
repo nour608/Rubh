@@ -29,7 +29,7 @@ export const buildWalletAuthMessage = (params: {
   timestamp: string
 }): string =>
   [
-    'Zawyafi API Session',
+    'rubh API Session',
     `address:${params.address.toLowerCase()}`,
     `timestamp:${params.timestamp}`,
   ].join('\n')

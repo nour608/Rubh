@@ -1,29 +1,25 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import {
   ArrowRight,
-  DollarSign,
-  CalendarClock,
-  Link2,
-  MapPin,
   ShieldCheck,
   ScanLine,
   Landmark,
   Lock,
-  Server,
-  Database,
-  Radio,
-  BarChart3,
+  Droplet,
+  ShoppingBag,
+  Car,
   Coffee,
-  Store,
+  CheckCircle2,
   ChevronRight,
-  Coins,
-  Factory,
+  Scale,
+  Building2,
+  Cpu,
+  BookOpen
 } from 'lucide-react'
-import { ZawyafiLogo } from '@/components/branding/zawyafi-logo'
+import { RubhLogo } from '@/components/branding/rubh-logo'
 
 /* ------------------------------------------------------------------ */
 /*  Scroll-reveal hook                                                 */
@@ -43,7 +39,7 @@ function useReveal() {
           observer.unobserve(el)
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.1 },
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -65,7 +61,7 @@ function RevealSection({
   return (
     <div
       ref={ref}
-      className={`opacity-0 translate-y-8 transition-all duration-700 ${delay} ${className}`}
+      className={`opacity-0 translate-y-8 ${delay} ${className}`}
     >
       {children}
     </div>
@@ -73,662 +69,400 @@ function RevealSection({
 }
 
 /* ------------------------------------------------------------------ */
-/*  Data                                                               */
+/*  Content Data                                                       */
 /* ------------------------------------------------------------------ */
+
 const trustSignals = [
-  { icon: ShieldCheck, label: 'KYC / AML Compliant' },
-  { icon: ScanLine, label: 'Chainlink Verified' },
-  { icon: Landmark, label: 'Regulated Marketplace' },
-  { icon: Lock, label: 'Audited Smart Contracts' },
-  { icon: Server, label: 'Bank-Grade Infrastructure' },
+  { icon: Scale, label: 'AAOIFI Sharia-Certified Structures' },
+  { icon: ScanLine, label: 'Chainlink CRE Hardware & POS Verification' },
+  { icon: Landmark, label: 'Saudi CMA FinTech Lab & SAMA Sandbox' },
+  { icon: ShieldCheck, label: 'Independent Orphan SPV Ring-Fencing' },
+  { icon: Lock, label: 'Audited Smart Contracts on Ethereum L2' },
 ]
 
-const features = [
+const pipelineDeals = [
   {
-    icon: DollarSign,
-    title: 'Fractional Access from $10',
-    description:
-      'Invest in tokenized real-world businesses — factories, cafés, and vending machines — without heavy capital requirements. Ownership starts at just $10.',
-  },
-  {
-    icon: CalendarClock,
-    title: 'Flexible Profit Distribution',
-    description:
-      'Earn returns daily, weekly, or monthly — tied directly to real business performance. Choose deals that match your cash-flow preferences.',
-  },
-  {
-    icon: Link2,
-    title: 'Off-Chain to On-Chain Transparency',
-    description:
-      'Real merchant data linked to the blockchain through Chainlink CRE. Every report is verifiable, every transaction is auditable.',
-  },
-]
-
-const opportunities = [
-  {
+    id: '1',
+    title: 'Tawrea Water-as-a-Service (WaaS) Facility',
+    structure: 'musharakah' as const,
+    structureLabel: 'Musharakah · Asset Equity',
+    sector: 'Industrial Cleantech & Utilities',
+    location: 'Dammam Industrial City, KSA',
+    icon: Droplet,
     image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop',
-    alt: 'Specialty café interior',
-    type: 'Café Chain',
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    targetYield: '18.2% APY',
+    minTicket: '$10 / 37.5 SAR',
+    tenor: '36 Months',
+    oracleType: 'IoT Flow Telemetry',
+  },
+  {
+    id: '2',
+    title: 'Al-Nakhla Luxury Retail Inventory Restock',
+    structure: 'murabaha' as const,
+    structureLabel: 'Murabaha · Trade Finance',
+    sector: 'Commercial Luxury Goods',
+    location: 'Red Sea Mall, Jeddah, KSA',
+    icon: ShoppingBag,
+    image:
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    targetYield: '12.0% Markup',
+    minTicket: '$10 / 37.5 SAR',
+    tenor: '6 Months',
+    oracleType: 'Square / Foodics POS Feed',
+  },
+  {
+    id: '3',
+    title: 'Riyadh EcoFleet Commercial EV Fleet Expansion',
+    structure: 'musharakah' as const,
+    structureLabel: 'Musharakah · Asset Equity',
+    sector: 'Clean Urban Logistics',
+    location: 'Riyadh Logistics Zone, KSA',
+    icon: Car,
+    image:
+      'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80',
+    targetYield: '16.5% APY',
+    minTicket: '$10 / 37.5 SAR',
+    tenor: '24 Months',
+    oracleType: 'OBD-II IoT Telematics',
+  },
+  {
+    id: '4',
+    title: 'Artisan Specialty Roastery Working Capital',
+    structure: 'murabaha' as const,
+    structureLabel: 'Murabaha · Trade Finance',
+    sector: 'Specialty Food & Beverage',
+    location: 'Al Olaya, Riyadh, KSA',
     icon: Coffee,
-    location: 'Cairo, Egypt',
-    name: 'Specialty Coffee Chain — 12 Locations',
-    metric: 'Expected Profit',
-    metricValue: '10.0%+',
-    min: '$10',
-    funded: 72,
-    raised: '$360K',
-    goal: '$500K',
-    payout: 'Weekly',
-  },
-  {
     image:
-      'https://images.unsplash.com/photo-1618506557292-ec1862b3c506?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Modern vending machines',
-    type: 'Vending Network',
-    icon: Store,
-    location: 'Dubai, UAE',
-    name: 'Smart Vending Network — 80 Units',
-    metric: 'Expected Profit',
-    metricValue: '20.0%',
-    min: '$10',
-    funded: 45,
-    raised: '$225K',
-    goal: '$500K',
-    payout: 'Weekly',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1562246438-80a098840215?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Drone manufacturing',
-    type: 'Manufacturing',
-    icon: Factory,
-    location: 'Jeddah, KSA',
-    name: 'Drone Manufacturing',
-    metric: 'Expected Profit',
-    metricValue: '40.0%',
-    min: '$50',
-    funded: 88,
-    raised: '$440K',
-    goal: '$500K',
-    payout: 'Monthly',
+      'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
+    targetYield: '11.5% Markup',
+    minTicket: '$10 / 37.5 SAR',
+    tenor: '9 Months',
+    oracleType: 'POS Sell-Through Feed',
   },
 ]
 
-const protocolFlowNodes = {
-  merchant: {
-    icon: Database,
-    title: 'Merchant Data',
-    description: 'POS sales, inventory, and revenue data collected from the business in real-time.',
-  },
-  cpr: {
-    icon: Server,
-    title: 'Backend CPR Engine',
-    description: 'Compliance Processing & Reporting engine validates, normalizes, and scores data.',
-  },
-  cre: {
-    icon: Radio,
-    title: 'Chainlink CRE',
-    description: 'Cross-chain Reporting Environment publishes verified reports onchain via oracle.',
-  },
-  onchain: {
-    icon: BarChart3,
-    title: 'Onchain Registry & Dividends',
-    description: 'Smart contracts update NAV, distribute dividends, and log immutable investor records.',
-  },
-}
-
-type FlowNode = (typeof protocolFlowNodes)[keyof typeof protocolFlowNodes]
-
-function FlowStepCard({ node, className = '' }: { node: FlowNode; className?: string }) {
-  const Icon = node.icon
-
-  return (
-    <div className={`relative rounded-2xl border border-cc-border bg-[var(--bg-surface)] p-5 shadow-sm backdrop-blur-sm ${className}`}>
-      <div className="mb-4 flex items-start gap-3">
-        <div className="flex size-11 items-center justify-center rounded-xl border border-cc-border bg-cc-bg">
-          <Icon className="size-5 text-cc-text" />
-        </div>
-      </div>
-      <h3 className="mb-2 text-base font-bold text-cc-text">{node.title}</h3>
-      <p className="text-sm leading-relaxed text-cc-text-sec">{node.description}</p>
-    </div>
-  )
-}
-
-/* ================================================================== */
-/*  PAGE                                                               */
-/* ================================================================== */
 export default function LandingPage() {
+  const [selectedStructure, setSelectedStructure] = useState<'all' | 'murabaha' | 'musharakah'>('all')
+
+  const filteredDeals =
+    selectedStructure === 'all'
+      ? pipelineDeals
+      : pipelineDeals.filter((d) => d.structure === selectedStructure)
+
   return (
-    <div className="relative text-[var(--text-primary)]">
-      {/* ───────────────── HERO ───────────────── */}
-      <section className="relative overflow-hidden">
-        {/* SVG dot pattern background */}
-        <div className="absolute inset-0 z-0 opacity-[0.03]">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="dot-pattern" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1.5" fill="#1c1c1c" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#dot-pattern)" />
-          </svg>
-        </div>
+    <div className="bg-[#F8F9FB] text-slate-900 selection:bg-[#133359]/10 selection:text-[#133359]">
+      {/* ───────────────── HERO SECTION ───────────────── */}
+      <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden">
+        {/* Subtle Background Glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-[#133359]/5 to-transparent pointer-events-none" />
+        
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center animate-fade-up">
+            {/* Minimalist Trust Pill */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/60 backdrop-blur-md px-3.5 py-1 text-xs text-slate-600 shadow-sm transition-transform hover:scale-105 cursor-default">
+              <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-medium">
+                Chainlink CRE · Sharia-Certified RWA
+              </span>
+            </div>
 
-        <div className="relative z-10 cc-container pt-16 pb-20 md:pt-24 md:pb-28">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="mb-8 animate-fade-in font-mono text-[10px] font-medium uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400 md:text-[11px]">
-              BLOCKCHAIN · TOKENIZED ASSETS · SME INVESTMENTS
-            </p>
-
-            <h1 className="font-display text-4xl sm:text-5xl md:text-[4rem] font-normal tracking-tight leading-[1.08] mb-6">
-              Invest in Real Businesses.{' '}
-              <span className="italic text-[var(--gold-light)]">Earn Real Returns.</span>
+            {/* Authoritative Main Headline */}
+            <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6 text-slate-900 drop-shadow-sm">
+              Institutional Sharia{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#133359] to-blue-800">
+                Real-World Assets.
+              </span>
             </h1>
 
-            <p className="mb-4 max-w-2xl mx-auto font-mono text-[12.5px] text-[var(--text-muted)] leading-relaxed md:text-[14px]">
-              Access curated tokenized business assets across factories, cafés, and vending machines.
-              Start from just{' '}
-              <span className="text-[var(--text-primary)] font-semibold">$10</span>.
+            {/* Sub-headline */}
+            <p className="mb-10 max-w-2xl mx-auto text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+              Rubh transforms physical fast-moving inventory and capital equipment into fractional, yield-bearing digital assets starting from <strong className="text-slate-900">$10 (~37.5 SAR)</strong>. By replacing static PDFs with <strong>Chainlink CRE tamper-proof POS and IoT verification</strong>, investors see exact operational performance.
             </p>
 
-            <div className="mb-10 space-y-1.5">
-              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--gold)] md:text-[12px]">
-                Selected opportunities may target up to 70% returns.
-              </p>
-              <p className="text-xs text-cc-text-sec md:text-[13px]">
-                Returns are not guaranteed and vary by asset and market conditions.
-              </p>
-            </div>
-
-            {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-16">
               <Link
                 href="/investor/marketplace"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-[#161733] px-9 py-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-[#f5f2eb] transition-all duration-300 [clip-path:polygon(9px_0%,100%_0%,calc(100%-9px)_100%,0_100%)] hover:brightness-110 dark:bg-[linear-gradient(135deg,#c9a84c,#e8c97a)] dark:text-[#0a0c10]"
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-[#133359] px-6 py-3.5 font-semibold text-sm text-white shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
-                START INVESTING
+                Explore Marketplace 
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/investor/marketplace"
-                className="w-full sm:w-auto inline-flex items-center justify-center border border-[var(--border-medium)] px-9 py-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-[var(--gold)] transition-all duration-300 hover:border-[var(--gold)] dark:border-[rgba(201,168,76,0.35)] dark:text-[#cfae61]"
+                href="/docs"
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3.5 font-semibold text-sm text-slate-800 shadow-sm transition-all duration-300 hover:bg-slate-50 hover:-translate-y-0.5"
               >
-                EXPLORE ASSETS
+                <BookOpen className="size-4 text-slate-500 group-hover:text-slate-700 transition-colors" />
+                Read the Docs
               </Link>
             </div>
 
-            {/* Quick stats */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-[560px] mx-auto">
-              {[
-                { lead: '$10', accent: '', label: 'MINIMUM' },
-                { lead: '24/7', accent: '', label: 'ACCESS' },
-                { lead: 'DAILY', accent: '', label: 'PAYOUTS' },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="border border-[#e9e1cf] bg-white/85 px-4 py-2.5 text-center shadow-[0_6px_18px_rgba(20,26,38,0.06)] backdrop-blur-[2px] dark:border-[rgba(201,168,76,0.24)] dark:bg-[rgba(12,16,23,0.68)] dark:shadow-[0_8px_22px_rgba(0,0,0,0.35)]"
-                >
-                  <p className="font-display text-[27px] leading-none text-cc-text">
-                    {stat.lead}
-                    {stat.accent ? <span className="text-[var(--gold)]">{stat.accent}</span> : null}
-                  </p>
-                  <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.2em] text-cc-text-sec">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+            {/* Harmonious KPI Metric Strip */}
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 rounded-xl border border-slate-200/60 bg-white/80 backdrop-blur-sm p-6 shadow-xl shadow-slate-200/40 text-left relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+              <div className="space-y-1 relative z-10">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Financing Deficit</p>
+                <p className="text-2xl sm:text-3xl font-heading font-extrabold text-slate-900">SAR 250B+</p>
+              </div>
+              <div className="space-y-1 relative z-10">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Minimum Ticket</p>
+                <p className="text-2xl sm:text-3xl font-heading font-extrabold text-slate-900">$10</p>
+              </div>
+              <div className="space-y-1 relative z-10">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Structures</p>
+                <p className="text-2xl sm:text-3xl font-heading font-extrabold text-slate-900">Trade/Equity</p>
+              </div>
+              <div className="space-y-1 relative z-10">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Verification</p>
+                <p className="text-2xl sm:text-3xl font-heading font-extrabold text-slate-900">Chainlink</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ────────────── TRUST STRIP ─────────────── */}
-      <section className="border-y border-cc-border bg-cc-bg-alt py-10">
-        <div className="cc-container">
-          <p className="text-center text-[11px] font-semibold text-cc-text-sec mb-8 uppercase tracking-[0.2em]">
-            Built on institutional-grade infrastructure
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-14">
-            {trustSignals.map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-2.5 text-cc-text-sec hover:text-cc-text transition-colors duration-300 group"
-              >
-                <item.icon className="size-5 text-cc-text-sec/50 group-hover:text-cc-text transition-colors" />
-                <span className="text-sm font-medium whitespace-nowrap">
-                  {item.label}
-                </span>
-              </div>
-            ))}
+      {/* ───────────────── TRUST SIGNALS BAR ───────────────── */}
+      <section className="border-y border-slate-200 bg-white py-4 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-xs sm:text-sm text-slate-600 animate-fade-in">
+            {trustSignals.map((item, idx) => {
+              const Icon = item.icon
+              return (
+                <div key={item.label} className="flex items-center gap-2 group cursor-default">
+                  <Icon className="size-4 text-[#133359] shrink-0 transition-transform group-hover:scale-110" />
+                  <span className="font-medium text-slate-700 group-hover:text-slate-900 transition-colors">{item.label}</span>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      <div className="relative">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-[0.08]"
-          style={{
-            backgroundImage: 'radial-gradient(circle, var(--border-subtle) 1px, transparent 1px)',
-            backgroundSize: '22px 22px',
-          }}
-        />
-        <div className="relative z-10">
-          {/* ────────────── FEATURE CARDS ─────────────── */}
-          <section className="cc-section bg-cc-bg">
-            <div className="cc-container">
-              <RevealSection>
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                  <div className="max-w-2xl">
-                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                      Why Choose <span className="text-cc-text-sec">Zawyafi</span>
-                    </h2>
-                    <p className="text-lg text-cc-text-sec">
-                      We bridge the gap between real-world businesses and global
-                      investors through tokenization, transparency, and trust.
-                    </p>
-                  </div>
-                  <Link
-                    href="/investor/marketplace"
-                    className="cc-nav-link flex items-center gap-1 group shrink-0 text-base pb-0.5"
-                  >
-                    Explore the marketplace
-                    <ArrowRight className="size-4 cc-arrow" />
-                  </Link>
-                </div>
-              </RevealSection>
+      {/* ───────────────── DOCS QUICK LINKS ───────────────── */}
+      <section className="py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <RevealSection className="mx-auto max-w-3xl text-center mb-12">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#133359] mb-2 block">
+              Learn More
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 text-slate-900">
+              How Rubh Works
+            </h2>
+          </RevealSection>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {features.map((feature, i) => (
-                  <RevealSection key={feature.title} delay={`delay-[${i * 150}ms]`}>
-                    <div className="group cc-card p-8 h-full hover:shadow-cc-card-hover">
-                      {/* Top accent line */}
-                      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cc-border to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="mb-6 inline-flex size-12 items-center justify-center rounded-cc bg-cc-bg-alt text-cc-text border border-cc-border">
-                        <feature.icon className="size-6" />
-                      </div>
-                      <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                      <p className="text-cc-text-sec leading-relaxed text-[15px]">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </RevealSection>
-                ))}
-              </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            <RevealSection delay="delay-[100ms]">
+              <Link href="/docs" className="group block h-full rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="size-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#133359] mb-5 border border-slate-100 transition-transform group-hover:scale-110">
+                  <Building2 className="size-6" />
+                </div>
+                <h3 className="font-heading text-xl font-bold mb-2 text-slate-900 group-hover:text-[#133359] transition-colors">The Problem</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Why traditional lending and legacy debt-crowdfunding fail SMEs and investors alike.
+                </p>
+                <span className="text-xs font-bold text-[#133359] flex items-center gap-1">Read more <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform" /></span>
+              </Link>
+            </RevealSection>
+
+            <RevealSection delay="delay-[200ms]">
+              <Link href="/docs/structures" className="group block h-full rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="size-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#133359] mb-5 border border-slate-100 transition-transform group-hover:scale-110">
+                  <Landmark className="size-6" />
+                </div>
+                <h3 className="font-heading text-xl font-bold mb-2 text-slate-900 group-hover:text-[#133359] transition-colors">Financing Structures</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Explore our Sharia-compliant Dual-Structure Architecture: Murabaha and Musharakah.
+                </p>
+                <span className="text-xs font-bold text-[#133359] flex items-center gap-1">Read more <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform" /></span>
+              </Link>
+            </RevealSection>
+
+            <RevealSection delay="delay-[300ms]">
+              <Link href="/docs/regulatory" className="group block h-full rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="size-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#133359] mb-5 border border-slate-100 transition-transform group-hover:scale-110">
+                  <ShieldCheck className="size-6" />
+                </div>
+                <h3 className="font-heading text-xl font-bold mb-2 text-slate-900 group-hover:text-[#133359] transition-colors">Regulatory Framework</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Independent Orphan SPVs, Sandbox Execution, and our vision for a commercial Neobank.
+                </p>
+                <span className="text-xs font-bold text-[#133359] flex items-center gap-1">Read more <ChevronRight className="size-3 group-hover:translate-x-1 transition-transform" /></span>
+              </Link>
+            </RevealSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────── FEATURED LIVE OPPORTUNITIES ───────────────── */}
+      <section className="py-20 md:py-24 bg-slate-50/50 border-t border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <RevealSection className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#133359] mb-2 block">
+                Active Pipeline
+              </span>
+              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+                Featured Investment Offerings
+              </h2>
+              <p className="text-slate-600 text-sm mt-2 max-w-xl">
+                Explore audited real-world business assets with minimum tickets starting from $10 (~37.5 SAR).
+              </p>
             </div>
-          </section>
 
-          {/* ───────── LIVE OPPORTUNITIES PREVIEW ──────── */}
-          <section className="cc-section bg-cc-bg-alt border-y border-cc-border">
-            <div className="cc-container">
-              <RevealSection>
-                <div className="flex items-end justify-between mb-12 gap-4">
-                  <div>
-                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-2">
-                      Live Opportunities
-                    </h2>
-                    <p className="text-cc-text-sec">
-                      Real businesses, real returns. Browse tokenized deals open for
-                      investment.
-                    </p>
-                  </div>
-                  <Link
-                    href="/investor/marketplace"
-                    className="hidden sm:flex items-center gap-1 rounded-full border border-cc-border bg-cc-bg px-5 py-2.5 text-sm font-semibold hover:bg-cc-bg-alt transition-all shrink-0 shadow-sm"
+            {/* Filter buttons */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedStructure('all')}
+                className={`rounded-lg px-4 py-2.5 text-xs font-semibold transition-all duration-300 ${
+                  selectedStructure === 'all'
+                    ? 'bg-[#133359] text-white shadow-md'
+                    : 'border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                }`}
+              >
+                All Instruments ({pipelineDeals.length})
+              </button>
+              <button
+                onClick={() => setSelectedStructure('murabaha')}
+                className={`rounded-lg px-4 py-2.5 text-xs font-semibold transition-all duration-300 ${
+                  selectedStructure === 'murabaha'
+                    ? 'bg-[#133359] text-white shadow-md'
+                    : 'border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                }`}
+              >
+                Murabaha (Trade)
+              </button>
+              <button
+                onClick={() => setSelectedStructure('musharakah')}
+                className={`rounded-lg px-4 py-2.5 text-xs font-semibold transition-all duration-300 ${
+                  selectedStructure === 'musharakah'
+                    ? 'bg-[#133359] text-white shadow-md'
+                    : 'border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                }`}
+              >
+                Musharakah (Equity)
+              </button>
+            </div>
+          </RevealSection>
+
+          {/* Deal Cards Grid */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {filteredDeals.map((deal, idx) => {
+              const isMurabaha = deal.structure === 'murabaha'
+              const delay = `delay-[${idx * 100}ms]`
+
+              return (
+                <RevealSection key={deal.id} delay={delay}>
+                  <div
+                    className="group flex flex-col justify-between h-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
                   >
-                    View All
-                    <ChevronRight className="size-4" />
-                  </Link>
-                </div>
-              </RevealSection>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {opportunities.map((opp, i) => (
-                  <RevealSection key={opp.name} delay={`delay-[${i * 100}ms]`}>
-                    <div className="group flex flex-col cc-card h-full hover:shadow-cc-card-hover">
-                      {/* Image */}
-                      <div className="relative h-48 w-full overflow-hidden rounded-t-cc">
-                        <Image
-                          alt={opp.alt}
-                          className="object-cover group-hover:scale-105 transition-transform duration-700"
-                          fill
-                          src={opp.image}
+                    <div>
+                      {/* Card Image Banner */}
+                      <div className="relative h-48 w-full overflow-hidden rounded-xl bg-slate-100 mb-5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={deal.image}
+                          alt={deal.title}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                        <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-xs font-semibold text-cc-text">
-                          <opp.icon className="size-3.5" />
-                          {opp.type}
+                        
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        {/* Structure Pill */}
+                        <div className="absolute top-3 left-3">
+                          <span
+                            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wide shadow-sm backdrop-blur-sm ${
+                              isMurabaha
+                                ? 'bg-white/90 text-[#133359] border border-white/20'
+                                : 'bg-emerald-50/90 text-emerald-800 border border-emerald-200/20'
+                            }`}
+                          >
+                            {deal.structureLabel}
+                          </span>
                         </div>
-                        <div className="absolute top-4 right-4 rounded-full bg-cc-accent/20 px-2.5 py-1 text-xs font-bold text-cc-accent border border-cc-accent/30">
-                          Open
+
+                        {/* Location */}
+                        <div className="absolute bottom-3 left-3 text-xs text-white font-medium drop-shadow-md transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                          {deal.location}
                         </div>
-                        <div className="absolute bottom-4 right-4 rounded-full bg-cc-text/80 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-white">
-                          {opp.payout} payout
+                      </div>
+
+                      {/* Card Body */}
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                        {deal.sector}
+                      </p>
+                      <h3 className="font-heading text-base font-bold text-slate-900 line-clamp-2 group-hover:text-[#133359] transition-colors mb-4">
+                        {deal.title}
+                      </h3>
+
+                      {/* Yield and Min Ticket */}
+                      <div className="grid grid-cols-2 gap-3 rounded-xl bg-slate-50 p-3.5 border border-slate-100 mb-4 group-hover:border-[#133359]/10 transition-colors">
+                        <div>
+                          <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Target Return</p>
+                          <p className="text-base font-black text-emerald-700 mt-0.5">{deal.targetYield}</p>
+                        </div>
+                        <div>
+                          <p className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Min Ticket</p>
+                          <p className="text-base font-black text-slate-900 mt-0.5">{deal.minTicket}</p>
                         </div>
                       </div>
 
-                      {/* Card body */}
-                      <div className="flex flex-1 flex-col p-6">
-                        <div className="flex items-center gap-1.5 text-xs font-medium text-cc-text-sec mb-2">
-                          <MapPin className="size-3.5" />
-                          {opp.location}
-                        </div>
-                        <h3 className="text-lg font-bold mb-4 text-cc-text">{opp.name}</h3>
-
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                          <div>
-                            <p className="text-xs text-cc-text-sec mb-1">
-                              {opp.metric}
-                            </p>
-                            <p className="text-base font-bold text-cc-text">
-                              {opp.metricValue}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-xs text-cc-text-sec mb-1">
-                              Min Investment
-                            </p>
-                            <p className="text-base font-bold">{opp.min}</p>
-                          </div>
-                        </div>
-
-                        {/* Progress bar */}
-                        <div className="mt-auto">
-                          <div className="flex justify-between text-xs font-medium mb-2">
-                            <span>{opp.funded}% Funded</span>
-                            <span>
-                              {opp.raised} / {opp.goal}
-                            </span>
-                          </div>
-                          <div className="h-2 w-full rounded-full bg-cc-border overflow-hidden">
-                            <div
-                              className="h-full rounded-full bg-cc-text transition-all duration-1000"
-                              style={{ width: `${opp.funded}%` }}
-                            />
-                          </div>
-                        </div>
-
-                        {/* Learn more */}
-                        <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-cc-text-sec group-hover:text-cc-text transition-colors">
-                          Learn More
-                          <ArrowRight className="size-3.5 cc-arrow" />
-                        </div>
+                      {/* Oracle Feed Tag */}
+                      <div className="flex items-center justify-between text-[11px] text-slate-500 px-1 mb-5">
+                        <span className="inline-flex items-center gap-1.5 text-slate-600 font-medium">
+                          <ScanLine className="size-3.5 text-[#133359]" />
+                          {deal.oracleType}
+                        </span>
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-1 rounded-md border border-emerald-200">
+                          CRE Verified
+                        </span>
                       </div>
                     </div>
-                  </RevealSection>
-                ))}
-              </div>
 
-              {/* Mobile CTA */}
-              <div className="mt-8 sm:hidden text-center">
-                <Link
-                  href="/investor/marketplace"
-                  className="inline-flex items-center gap-1 rounded-full border border-cc-border bg-cc-bg px-6 py-3 text-sm font-semibold hover:bg-cc-bg-alt transition-all shadow-sm"
-                >
-                  View All Opportunities
-                  <ChevronRight className="size-4" />
-                </Link>
-              </div>
-            </div>
-          </section>
-
-          {/* ──────── HOW IT WORKS — PROTOCOL RAIL ──────── */}
-          <section id="how-it-works" className="cc-section bg-cc-bg">
-            <div className="cc-container">
-              <RevealSection>
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                    How It Works
-                  </h2>
-                  <p className="mx-auto max-w-2xl text-lg text-cc-text-sec">
-                    Merchant data is processed by the Backend CPR Engine and Chainlink CRE in
-                    parallel before onchain registry updates and dividend distribution.
-                  </p>
-                </div>
-              </RevealSection>
-
-              <div className="hidden md:block">
-                <div className="relative mx-auto max-w-6xl">
-                  <svg
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 h-full w-full"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                  >
-                    <g stroke="var(--border-subtle)" strokeWidth="1.5" fill="none">
-                      <path d="M 36 30 V 70" />
-                      <path d="M 20 50 H 36" />
-                      <path d="M 36 30 H 44" />
-                      <path d="M 36 70 H 44" />
-
-                      <path d="M 64 30 V 70" />
-                      <path d="M 56 30 H 64" />
-                      <path d="M 56 70 H 64" />
-                      <path d="M 64 50 H 74" />
-                    </g>
-                    <polygon points="44,28.6 44,31.4 45.6,30" fill="var(--border-subtle)" />
-                    <polygon points="44,68.6 44,71.4 45.6,70" fill="var(--border-subtle)" />
-                    <polygon points="74,48.6 74,51.4 75.6,50" fill="var(--border-subtle)" />
-                  </svg>
-
-                  <div className="grid grid-cols-[1fr_0.4fr_1fr_0.4fr_1fr] grid-rows-2 gap-x-0 gap-y-8 py-5">
-                    <RevealSection className="col-start-1 row-span-2 flex items-center">
-                      <FlowStepCard node={protocolFlowNodes.merchant} />
-                    </RevealSection>
-
-                    <RevealSection delay="delay-[100ms]" className="col-start-3 row-start-1">
-                      <FlowStepCard node={protocolFlowNodes.cpr} />
-                    </RevealSection>
-
-                    <RevealSection delay="delay-[200ms]" className="col-start-3 row-start-2">
-                      <FlowStepCard node={protocolFlowNodes.cre} />
-                    </RevealSection>
-
-                    <RevealSection delay="delay-[300ms]" className="col-start-5 row-span-2 flex items-center">
-                      <FlowStepCard node={protocolFlowNodes.onchain} />
-                    </RevealSection>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-4 md:hidden">
-                <RevealSection>
-                  <FlowStepCard node={protocolFlowNodes.merchant} />
-                </RevealSection>
-
-                <RevealSection delay="delay-[80ms]">
-                  <div className="relative py-2">
-                    <div className="h-px w-full bg-cc-border" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="bg-cc-bg px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-cc-text-sec">
-                        Parallel Processing
-                      </span>
-                    </div>
+                    {/* CTA Button */}
+                    <Link href={`/investor/deal/${deal.id}`} className="block">
+                      <button className="w-full rounded-xl bg-slate-50 text-[#133359] border border-slate-200 hover:border-[#133359] hover:bg-[#133359] hover:text-white font-bold text-xs py-3 shadow-sm transition-all duration-300 text-center flex items-center justify-center gap-2">
+                        Inspect Deal <ArrowRight className="size-3.5" />
+                      </button>
+                    </Link>
                   </div>
                 </RevealSection>
-
-                <RevealSection delay="delay-[120ms]">
-                  <FlowStepCard node={protocolFlowNodes.cpr} />
-                </RevealSection>
-
-                <RevealSection delay="delay-[200ms]">
-                  <FlowStepCard node={protocolFlowNodes.cre} />
-                </RevealSection>
-
-                <RevealSection delay="delay-[260ms]">
-                  <div className="relative py-2">
-                    <div className="h-px w-full bg-cc-border" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="bg-cc-bg px-3 text-[10px] font-bold uppercase tracking-[0.18em] text-cc-text-sec">
-                        Converges Onchain
-                      </span>
-                    </div>
-                  </div>
-                </RevealSection>
-
-                <RevealSection delay="delay-[300ms]">
-                  <FlowStepCard node={protocolFlowNodes.onchain} />
-                </RevealSection>
-              </div>
-            </div>
-          </section>
-
-          {/* ────────────── FINAL CTA ─────────────── */}
-          <section className="relative cc-section overflow-hidden border-t border-cc-border bg-cc-bg-alt">
-            {/* Subtle radial glow */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-cc-border/30 blur-3xl" />
-
-            <div className="relative z-10 cc-container text-center">
-              <RevealSection>
-                <div className="inline-flex items-center gap-2 rounded-full border border-cc-border bg-cc-bg px-4 py-1.5 mb-8 shadow-sm">
-                  <Coins className="size-4 text-cc-text" />
-                  <span className="text-sm font-semibold text-cc-text">
-                    Start with $10
-                  </span>
-                </div>
-
-                <h2 className="text-3xl font-bold tracking-tight sm:text-5xl mb-6 max-w-2xl mx-auto">
-                  Ready to invest in{' '}
-                  <span className="text-cc-text-sec">
-                    real businesses
-                  </span>
-                  ?
-                </h2>
-                <p className="text-lg text-cc-text-sec mb-10 max-w-xl mx-auto leading-relaxed">
-                  Join a growing community of investors earning real returns from
-                  tokenized business inventory — fully transparent, fully onchain.
-                </p>
-
-                <Link
-                  href="/investor/marketplace"
-                  className="inline-flex items-center justify-center bg-[#161733] px-9 py-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-[#f5f2eb] transition-all duration-300 [clip-path:polygon(9px_0%,100%_0%,calc(100%-9px)_100%,0_100%)] hover:brightness-110 dark:bg-[linear-gradient(135deg,#c9a84c,#e8c97a)] dark:text-[#0a0c10]"
-                >
-                  START INVESTING
-                </Link>
-
-                <p className="mt-8 text-xs text-cc-text-sec max-w-md mx-auto">
-                  Investing involves risk. Past performance is not indicative of
-                  future results. Tokenized assets are subject to market conditions
-                  and regulatory requirements. Please review all deal documentation
-                  before investing.
-                </p>
-              </RevealSection>
-            </div>
-          </section>
-
-          {/* ────────────── FOOTER ─────────────── */}
-          <footer className="border-t border-cc-border bg-cc-bg py-16">
-            <div className="cc-container">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                {/* Brand */}
-                <div className="md:col-span-1">
-                  <div className="mb-4">
-                    <ZawyafiLogo className="h-8 w-auto text-cc-text" />
-                  </div>
-                  <p className="text-sm text-cc-text-sec leading-relaxed">
-                    Tokenized real-world business investing.
-                    Transparent. Compliant. Accessible.
-                  </p>
-                </div>
-
-                {/* Platform */}
-                <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-cc-text-sec mb-4">
-                    Platform
-                  </h4>
-                  <ul className="space-y-3">
-                    <li>
-                      <Link
-                        href="/investor/marketplace"
-                        className="cc-nav-link pb-0.5"
-                      >
-                        Marketplace
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/merchant"
-                        className="cc-nav-link pb-0.5"
-                      >
-                        For Businesses
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/compliance"
-                        className="cc-nav-link pb-0.5"
-                      >
-                        Compliance
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Company */}
-                <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-cc-text-sec mb-4">
-                    Company
-                  </h4>
-                  <ul className="space-y-3">
-                    <li>
-                      <Link
-                        href="/#about"
-                        className="cc-nav-link pb-0.5"
-                      >
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/#how-it-works"
-                        className="cc-nav-link pb-0.5"
-                      >
-                        How It Works
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Legal */}
-                <div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-cc-text-sec mb-4">
-                    Legal
-                  </h4>
-                  <ul className="space-y-3">
-                    <li>
-                      <span className="text-sm text-cc-text-sec">
-                        Terms of Service
-                      </span>
-                    </li>
-                    <li>
-                      <span className="text-sm text-cc-text-sec">
-                        Privacy Policy
-                      </span>
-                    </li>
-                    <li>
-                      <span className="text-sm text-cc-text-sec">
-                        Risk Disclosure
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Bottom bar */}
-              <div className="border-t border-cc-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-xs text-cc-text-sec">
-                  © 2026 Zawyafi. All rights reserved.
-                </p>
-                <p className="text-xs text-cc-text-sec text-center sm:text-right max-w-md">
-                  Zawyafi is a technology platform, not a licensed financial
-                  institution. All investments carry risk. Read all documentation
-                  before investing.
-                </p>
-              </div>
-            </div>
-          </footer>
+              )
+            })}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* ───────────────── FOOTER ───────────────── */}
+      <footer className="border-t border-slate-200 bg-white py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200">
+            <RubhLogo size="md" />
+            <div className="flex flex-wrap gap-6 text-xs font-medium text-slate-600">
+              <Link href="/investor/marketplace" className="hover:text-[#133359] transition-colors">
+                Marketplace
+              </Link>
+              <Link href="/docs/structures" className="hover:text-[#133359] transition-colors">
+                Financing Structures
+              </Link>
+              <Link href="/merchant" className="hover:text-[#133359] transition-colors">
+                SME Issuance
+              </Link>
+              <Link href="/docs" className="hover:text-[#133359] transition-colors">
+                Documentation
+              </Link>
+            </div>
+          </div>
+
+          <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+            <p>© 2026 Rubh Institutional RWA Platform. All rights reserved.</p>
+            <p className="text-center md:text-right max-w-xl">
+              Rubh is a financial technology infrastructure platform. Financing instruments operate under Saudi CMA FinTech Lab and SAMA Sandbox experimental frameworks.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

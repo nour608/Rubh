@@ -18,13 +18,24 @@ contract KycOracleReceiverTest is Test {
 
     function setUp() public {
         identityRegistry = new IdentityRegistry();
-        receiver = new KycOracleReceiver(address(identityRegistry), address(this), forwarder);
-        identityRegistry.grantRole(identityRegistry.ADMIN_ROLE(), address(receiver));
+        receiver = new KycOracleReceiver(
+            address(identityRegistry),
+            address(this),
+            forwarder
+        );
+        identityRegistry.grantRole(
+            identityRegistry.ADMIN_ROLE(),
+            address(receiver)
+        );
     }
 
     function test_OnReportVerifiesWallet() public {
         bytes32 requestIdHash = keccak256("request-1");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
 
         vm.prank(forwarder);
         receiver.onReport("", report);
@@ -37,7 +48,11 @@ contract KycOracleReceiverTest is Test {
         identityRegistry.addAddress(wallet);
 
         bytes32 requestIdHash = keccak256("request-2");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
 
         vm.prank(forwarder);
         receiver.onReport("", report);
@@ -48,21 +63,40 @@ contract KycOracleReceiverTest is Test {
 
     function test_OnReportRevertsForNonForwarder() public {
         bytes32 requestIdHash = keccak256("request-3");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
 
-        vm.expectRevert(abi.encodeWithSelector(KycOracleReceiver.InvalidSender.selector, outsider, forwarder));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                KycOracleReceiver.InvalidSender.selector,
+                outsider,
+                forwarder
+            )
+        );
         vm.prank(outsider);
         receiver.onReport("", report);
     }
 
     function test_ReplayReverts() public {
         bytes32 requestIdHash = keccak256("request-4");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
 
         vm.prank(forwarder);
         receiver.onReport("", report);
 
-        vm.expectRevert(abi.encodeWithSelector(KycOracleReceiver.DuplicateRequest.selector, requestIdHash));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                KycOracleReceiver.DuplicateRequest.selector,
+                requestIdHash
+            )
+        );
         vm.prank(forwarder);
         receiver.onReport("", report);
     }
@@ -71,10 +105,24 @@ contract KycOracleReceiverTest is Test {
         receiver.setExpectedAuthor(workflowOwner);
 
         bytes32 requestIdHash = keccak256("request-5");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
-        bytes memory metadata = _buildMetadata(bytes32("workflow-1"), bytes10("zawyafi001"), outsider);
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
+        bytes memory metadata = _buildMetadata(
+            bytes32("workflow-1"),
+            bytes10("rubh001"),
+            outsider
+        );
 
-        vm.expectRevert(abi.encodeWithSelector(KycOracleReceiver.InvalidAuthor.selector, outsider, workflowOwner));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                KycOracleReceiver.InvalidAuthor.selector,
+                outsider,
+                workflowOwner
+            )
+        );
         vm.prank(forwarder);
         receiver.onReport(metadata, report);
     }
@@ -83,13 +131,23 @@ contract KycOracleReceiverTest is Test {
         receiver.setExpectedWorkflowId(bytes32("expected-workflow-id"));
 
         bytes32 requestIdHash = keccak256("request-6");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
         bytes32 receivedWorkflowId = bytes32("other-workflow-id");
-        bytes memory metadata = _buildMetadata(receivedWorkflowId, bytes10("zawyafi001"), workflowOwner);
+        bytes memory metadata = _buildMetadata(
+            receivedWorkflowId,
+            bytes10("rubh001"),
+            workflowOwner
+        );
 
         vm.expectRevert(
             abi.encodeWithSelector(
-                KycOracleReceiver.InvalidWorkflowId.selector, receivedWorkflowId, bytes32("expected-workflow-id")
+                KycOracleReceiver.InvalidWorkflowId.selector,
+                receivedWorkflowId,
+                bytes32("expected-workflow-id")
             )
         );
         vm.prank(forwarder);
@@ -100,21 +158,35 @@ contract KycOracleReceiverTest is Test {
         receiver.setExpectedAuthor(workflowOwner);
 
         bytes32 requestIdHash = keccak256("request-invalid-metadata");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
 
         vm.expectRevert(KycOracleReceiver.InvalidMetadata.selector);
         vm.prank(forwarder);
         receiver.onReport(hex"0102", report);
     }
 
-    function test_MetadataValidation_AllowsMatchingAuthorAndWorkflowName() public {
+    function test_MetadataValidation_AllowsMatchingAuthorAndWorkflowName()
+        public
+    {
         receiver.setExpectedAuthor(workflowOwner);
-        receiver.setExpectedWorkflowName("ZawyafiKYCWorkflow");
+        receiver.setExpectedWorkflowName("rubhKYCWorkflow");
 
         bytes10 expectedName = receiver.getExpectedWorkflowName();
         bytes32 requestIdHash = keccak256("request-valid-metadata");
-        bytes memory report = abi.encode(requestIdHash, wallet, uint64(block.timestamp));
-        bytes memory metadata = _buildMetadata(bytes32("workflow-id"), expectedName, workflowOwner);
+        bytes memory report = abi.encode(
+            requestIdHash,
+            wallet,
+            uint64(block.timestamp)
+        );
+        bytes memory metadata = _buildMetadata(
+            bytes32("workflow-id"),
+            expectedName,
+            workflowOwner
+        );
 
         vm.prank(forwarder);
         receiver.onReport(metadata, report);
@@ -125,9 +197,18 @@ contract KycOracleReceiverTest is Test {
 
     function test_OnReportRevertsForZeroWallet() public {
         bytes32 requestIdHash = keccak256("request-zero-wallet");
-        bytes memory report = abi.encode(requestIdHash, address(0), uint64(block.timestamp));
+        bytes memory report = abi.encode(
+            requestIdHash,
+            address(0),
+            uint64(block.timestamp)
+        );
 
-        vm.expectRevert(abi.encodeWithSelector(KycOracleReceiver.InvalidWallet.selector, address(0)));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                KycOracleReceiver.InvalidWallet.selector,
+                address(0)
+            )
+        );
         vm.prank(forwarder);
         receiver.onReport("", report);
     }
@@ -137,11 +218,11 @@ contract KycOracleReceiverTest is Test {
         assertTrue(receiver.supportsInterface(type(IERC165).interfaceId));
     }
 
-    function _buildMetadata(bytes32 workflowId, bytes10 workflowName, address owner)
-        internal
-        pure
-        returns (bytes memory)
-    {
+    function _buildMetadata(
+        bytes32 workflowId,
+        bytes10 workflowName,
+        address owner
+    ) internal pure returns (bytes memory) {
         return abi.encodePacked(workflowId, workflowName, owner);
     }
 }

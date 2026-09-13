@@ -11,7 +11,7 @@ export default function KYCStepperPage() {
         <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-gold">KYC Verification</p>
         <h1 className="font-heading text-4xl text-text">Verify your Identity</h1>
         <p className="mx-auto max-w-2xl text-sm text-textMuted md:text-base">
-          To invest in GCC opportunities on Zawyafi, we need to verify your eligibility and compliance.
+          To invest in GCC opportunities on rubh, we need to verify your eligibility and compliance.
         </p>
       </div>
 

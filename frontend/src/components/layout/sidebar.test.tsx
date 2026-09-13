@@ -32,6 +32,11 @@ vi.mock('next/link', () => ({
   ),
 }))
 
+vi.mock('thirdweb/react', () => ({
+  useActiveWallet: () => null,
+  useDisconnect: () => ({ disconnect: vi.fn() }),
+}))
+
 vi.mock('@/hooks/use-capabilities', () => ({
   useCapabilities: () => ({
     address: state.address,

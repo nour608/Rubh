@@ -1,18 +1,16 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Providers } from '@/components/layout/providers'
-import { AnimatedBackground } from '@/components/AnimatedBackground'
 import '@/app/globals.css'
 
-
 export const metadata: Metadata = {
-  title: 'Zawyafi - Tokenized Private Markets Marketplace',
+  title: 'Rubh | Institutional Sharia-Certified RWA Marketplace',
   description:
-    'Unlock access to premium GCC private market opportunities. Tokenized for fractional ownership, instant settlement, and 24/7 trading.',
+    'Fractional SME inventory and capital asset financing starting from $10. Cryptographically verified by Chainlink CRE.',
   icons: {
-    icon: '/zawyafi-outlined-z.svg',
-    shortcut: '/zawyafi-outlined-z.svg',
-    apple: '/zawyafi-outlined-z.svg',
+    icon: '/rubh-mark.svg',
+    shortcut: '/rubh-mark.svg',
+    apple: '/rubh-mark.svg',
   },
 }
 
@@ -36,12 +34,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="overflow-x-hidden min-h-screen relative">
-        <AnimatedBackground />
-
+      <body className="min-h-screen bg-[#F8F9FB] text-slate-900 antialiased selection:bg-[#133359]/10 selection:text-[#133359]">
         <Providers>
-          {/* Main content z-index ensures it stays above the AnimatedBackground */}
-          <div className="relative z-[10] min-h-screen">{children}</div>
+          <div className="min-h-screen flex flex-col">{children}</div>
         </Providers>
       </body>
     </html>

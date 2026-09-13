@@ -21,8 +21,8 @@ export const HomeDashboard = () => {
   return (
     <main className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-6 lg:px-8 lg:py-8">
       <PageHeader
-        title="Revenue Attestation Control Room"
-        subtitle="Track live cashflow attestation from Square through CRE into onchain settlement, optimized for demo execution and operational readiness."
+        title="Rubh Attestation Control Room"
+        subtitle="Track live verified SME commercial attestation from POS systems and industrial IoT sensors through Chainlink CRE into onchain settlement."
       />
 
       <Card className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">

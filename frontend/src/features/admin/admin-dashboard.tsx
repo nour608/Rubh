@@ -438,7 +438,7 @@ const BatchRow = ({ batch, onEdit }: { batch: EnrichedBatch; onEdit: () => void;
 const OracleControls = () => {
   const [expectedAuthor, setExpectedAuthor] = useState('')
   const [expectedWorkflowId, setExpectedWorkflowId] = useState('0x')
-  const [expectedWorkflowName, setExpectedWorkflowName] = useState('ZawyafiOracle')
+  const [expectedWorkflowName, setExpectedWorkflowName] = useState('rubhOracle')
 
   const authorAction = useTransactionAction()
   const workflowIdAction = useTransactionAction()

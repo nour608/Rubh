@@ -118,8 +118,8 @@ export const ComplianceDashboard = () => {
   return (
     <main className="space-y-6">
       <PageHeader
-        title="Compliance and Risk"
-        subtitle="Review attested period reports, anomaly reasons, and export regulator-ready snapshots for audit flows."
+        title="Regulatory Compliance & Sandbox Control"
+        subtitle="Review Chainlink CRE attested period reports, verify Sharia audit logs, and export regulator-ready compliance snapshots for Saudi CMA FinTech Lab and SAMA Sandbox oversight."
       />
 
       <ComplianceOperationsPanel />

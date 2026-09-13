@@ -10,8 +10,8 @@ interface CardProps {
 }
 
 const variantStyles: Record<CardVariant, string> = {
-  dark: 'rounded-2xl border border-line bg-panel p-5 shadow-[0_2px_8px_rgba(26,26,46,0.06),inset_0_1px_0_rgba(255,255,255,0.4)] backdrop-blur',
-  light: 'cc-card p-5',
+  dark: 'rounded-2xl border border-slate-200 bg-white p-6 shadow-sm',
+  light: 'rounded-2xl border border-slate-200 bg-white p-6 shadow-sm',
 }
 
 export const Card = ({ className, children, variant = 'dark' }: CardProps) => (

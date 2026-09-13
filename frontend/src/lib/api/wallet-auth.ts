@@ -19,7 +19,7 @@ interface WalletApiSession {
 // Backend accepts signed timestamps within 5 minutes.
 // Keep client-side signature cache below that window.
 const SESSION_TTL_MS = 4 * 60 * 1000;
-const API_SESSION_STORAGE_KEY = "zawyafi.walletApiSession.v1";
+const API_SESSION_STORAGE_KEY = "rubh.walletApiSession.v1";
 let cachedSession: WalletAuthSession | null = null;
 let cachedApiSession: WalletApiSession | null = null;
 
@@ -28,7 +28,7 @@ export const buildWalletAuthMessage = (
   timestamp: string,
 ): string =>
   [
-    `Zawyafi API Session`,
+    `rubh API Session`,
     `address:${address.toLowerCase()}`,
     `timestamp:${timestamp}`,
   ].join("\n");

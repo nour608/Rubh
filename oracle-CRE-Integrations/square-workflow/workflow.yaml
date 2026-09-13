@@ -17,7 +17,7 @@
 # ==========================================================================
 staging-settings:
   user-workflow:
-    workflow-name: "ZawyafiOracle-staging"
+    workflow-name: "rubhOracle-staging"
   workflow-artifacts:
     workflow-path: "./main.ts"
     config-path: "./config.staging.json"
@@ -27,7 +27,7 @@ staging-settings:
 # ==========================================================================
 production-settings:
   user-workflow:
-    workflow-name: "ZawyafiOracle-production"
+    workflow-name: "rubhOracle-production"
   workflow-artifacts:
     workflow-path: "./main.ts"
     config-path: "./config.production.json"
