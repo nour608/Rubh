@@ -7,4 +7,12 @@ remappings = [
     "forge-std/=lib/forge-std/src/",
 ]
 via_ir = true
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+optimizer = true
+optimizer_runs = 1
+
+[rpc_endpoints]
+# TODO: Replace with the exact Arc Testnet/Mainnet RPC provided by ETHGlobal
+arc = "https://rpc.testnet.arc.network"
+
+[etherscan]
+arc = { key = "${ARC_API_KEY}", url = "https://explorer.arc.network/api" }

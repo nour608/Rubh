@@ -47,3 +47,4 @@ smart-contracts/cache/
 smart-contracts/out/
 smart-contracts/broadcast/
 smart-contracts/.env
+deploy-arc.sh
